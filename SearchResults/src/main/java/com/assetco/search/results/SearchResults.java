@@ -5,7 +5,7 @@ import java.util.*;
 public class SearchResults {
     private final List<Asset> found = new ArrayList<>();
     private Map<HotspotKey, Hotspot> hotspots = new HashMap<>();
-    private UserSegment userSegment;
+    private UserSegment userSegment = UserSegment.NewsMedia;
 
     public UserSegment getUserSegment() {
         return userSegment;

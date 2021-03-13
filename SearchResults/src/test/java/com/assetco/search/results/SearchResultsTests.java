@@ -1,10 +1,11 @@
 package com.assetco.search.results;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class SearchResultsTests {
     private SearchResults results;
@@ -20,8 +21,15 @@ public class SearchResultsTests {
     }
 
     @Test
-    public void userSegmentStartsNull() {
-        assertNull(results.getUserSegment());
+    public void userSegmentIsNewsMediaInitially() {
+        thenUserSegmentIs(UserSegment.NewsMedia);
+    }
+
+    @ParameterizedTest
+    @EnumSource(UserSegment.class)
+    public void modifyUserSegment(UserSegment userSegment) {
+        whenSetUserSegment(userSegment);
+        thenUserSegmentIs(userSegment);
     }
 
     @Test
@@ -118,5 +126,13 @@ public class SearchResultsTests {
 
     private void thenFoundItemCountIs(int expected) {
         assertEquals(expected, results.getFound().size());
+    }
+
+    private void whenSetUserSegment(UserSegment userSegment) {
+        results.setUserSegment(userSegment);
+    }
+
+    private void thenUserSegmentIs(UserSegment userSegment) {
+        assertEquals(userSegment, results.getUserSegment());
     }
 }

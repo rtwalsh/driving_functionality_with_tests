@@ -8,8 +8,10 @@ public class UserSegmentTests {
 
     @Test
     public void itShouldHaveMembers() {
-        assertEquals("NewsMedia", UserSegment.NewsMedia.toString());
-        assertEquals("OtherMedia", UserSegment.OtherMedia.toString());
-        assertEquals("GeneralPublic", UserSegment.GeneralPublic.toString());
+        UserSegment[] userSegments = UserSegment.values();
+        assertEquals(3, userSegments.length);
+        assertEquals("NewsMedia", userSegments[0].name());
+        assertEquals("OtherMedia", userSegments[1].name());
+        assertEquals("GeneralPublic", userSegments[2].name());
     }
 }
