@@ -8,7 +8,7 @@ import static com.assetco.search.results.AssetVendorRelationshipLevel.*;
 // Identifying the "patterns" in testing allowed us to boil the concrete tests down to just sets of parameters.
 // This is the simplest case, it has a single "relaxed" rule and (of course) it dumps all
 // the basic-level assets.
-public class SilverDealsApplicatorTests extends GateBasedDealsApplicatorTests {
+public class SilverGateBasedDealsApplicatorTests extends DealsApplicatorTests {
     public static class ForBasicAssets extends ExcludedAssetsDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getSearchResultMaximumVendorLevel() {
@@ -18,6 +18,11 @@ public class SilverDealsApplicatorTests extends GateBasedDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getExcludedCategoryOfVendors() {
             return Basic;
+        }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new SilverGateBasedDealsApplicator(assessments, measurements);
         }
     }
 
@@ -45,6 +50,11 @@ public class SilverDealsApplicatorTests extends GateBasedDealsApplicatorTests {
         @Override
         protected ActivityLevel getMinimumVolume() {
             return High;
+        }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new SilverGateBasedDealsApplicator(assessments, measurements);
         }
     }
 }

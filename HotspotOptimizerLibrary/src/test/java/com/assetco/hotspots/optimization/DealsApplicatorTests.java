@@ -10,15 +10,19 @@ import static org.mockito.Mockito.*;
 // of common implementation details:
 //   1. It ensures I don't have to find a bunch of places to make one change.
 //   2. It moves to a different spot language and details that might distract from what a test truly specifies.
-public class GateBasedDealsApplicatorTests {
+public abstract class DealsApplicatorTests {
     protected AssetAssessments assessments;
     protected AssetMeasurements measurements;
     protected DealsApplicator applicator;
     protected Asset asset;
     protected SearchResults searchResults;
 
-    protected void setGoverningRelationshipLevel(AssetVendorRelationshipLevel level) {
-        applicator = DealsApplicator.createInstance(level, assessments, measurements);
+//    protected void setGoverningRelationshipLevel(AssetVendorRelationshipLevel level) {
+//        applicator = DealsApplicator.createInstance(level, assessments, measurements);
+//    }
+
+    protected void setGoverningRelationshipLevel(DealsApplicator dealsApplicator) {
+        applicator = dealsApplicator;
     }
 
     public void baseSetup() {

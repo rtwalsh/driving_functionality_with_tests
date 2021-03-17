@@ -9,7 +9,9 @@ import static com.assetco.search.results.AssetVendorRelationshipLevel.*;
 // Identifying the "patterns" in testing allowed us to boil the concrete tests down to just sets of parameters.
 // This is the most complex case, it has two sets of strict rules, a relaxed rule, and (of course) it dumps all
 // the basic-level assets.
-public class PartnerDealsApplicatorTests extends GateBasedDealsApplicatorTests {
+public class PartnerGateBasedDealsApplicatorTests extends DealsApplicatorTests {
+
+
     public static class ForBasicAssets extends ExcludedAssetsDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getExcludedCategoryOfVendors() {
@@ -19,6 +21,11 @@ public class PartnerDealsApplicatorTests extends GateBasedDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getSearchResultMaximumVendorLevel() {
             return Partner;
+        }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new PartnerGateBasedDealsApplicator(assessments, measurements);
         }
     }
 
@@ -43,6 +50,11 @@ public class PartnerDealsApplicatorTests extends GateBasedDealsApplicatorTests {
         protected AssetVendorRelationshipLevel getSearchResultMaximumVendorLevel() {
             return Partner;
         }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new PartnerGateBasedDealsApplicator(assessments, measurements);
+        }
     }
 
     public static class ForGoldAssets extends StrictRuleDealsApplicatorTests {
@@ -65,13 +77,18 @@ public class PartnerDealsApplicatorTests extends GateBasedDealsApplicatorTests {
         protected AssetVendorRelationshipLevel getSearchResultMaximumVendorLevel() {
             return Partner;
         }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new PartnerGateBasedDealsApplicator(assessments, measurements);
+        }
     }
 
-    public static class ForPartnerAssets extends GateBasedDealsApplicatorTests {
+    public static class ForPartnerAssets extends DealsApplicatorTests {
         @BeforeEach
         public void setup() {
             baseSetup();
-            setGoverningRelationshipLevel(Partner);
+            setGoverningRelationshipLevel(new PartnerGateBasedDealsApplicator(assessments, measurements));
             givenAssetVendorLevel(Partner);
         }
 

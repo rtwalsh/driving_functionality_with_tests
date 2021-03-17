@@ -10,7 +10,7 @@ import static com.assetco.search.results.AssetVendorRelationshipLevel.Silver;
 
 // Identifying the "patterns" in testing allowed us to boil the concrete tests down to just sets of parameters.
 // You can see a mixture of all the rule types expressed here.
-public class GoldDealsApplicatorTests {
+public class GoldGateBasedDealsApplicatorTests {
     public static class ForGoldAssets extends RelaxedRuleDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getSearchResultMaximumVendorLevel() {
@@ -37,6 +37,10 @@ public class GoldDealsApplicatorTests {
             return Elevated;
         }
 
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new GoldGateBasedDealsApplicator(assessments, measurements);
+        }
     }
 
     public static class ForSilverAssets extends StrictRuleDealsApplicatorTests {
@@ -59,6 +63,11 @@ public class GoldDealsApplicatorTests {
         protected ActivityLevel getMinimumVolume() {
             return High;
         }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new GoldGateBasedDealsApplicator(assessments, measurements);
+        }
     }
 
     public static class ForBasicAssets extends ExcludedAssetsDealsApplicatorTests {
@@ -70,6 +79,11 @@ public class GoldDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getExcludedCategoryOfVendors() {
             return Basic;
+        }
+
+        @Override
+        protected DealsApplicator getApplicator() {
+            return new GoldGateBasedDealsApplicator(assessments, measurements);
         }
     }
 }
