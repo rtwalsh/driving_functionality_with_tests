@@ -16,7 +16,7 @@ public interface DealsApplicator {
             case Silver:
                 return new SilverDealsApplicator(assessments, measurements);
         }
-        return new BasicDealsApplicator(assessments, measurements);
+        return new BasicDealsApplicator();
     }
 
     void applyDeals(SearchResults results, Asset asset);
