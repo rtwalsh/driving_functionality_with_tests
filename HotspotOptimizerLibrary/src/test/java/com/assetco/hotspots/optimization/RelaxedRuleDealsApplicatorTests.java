@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 // There was a lot of repetition in the tests, especially after adding the partner-level strategy
 // in order to keep the test code maintainable, it was necessary to refactor the duplication away.
 // I am aware of the irony in repeating this comment thrice.
-public abstract class RelaxedRuleDealsApplicatorTests extends DealsApplicatorTests {
+public abstract class RelaxedRuleDealsApplicatorTests extends GateBasedDealsApplicatorTests {
     @BeforeEach
     public void setup() {
         baseSetup();

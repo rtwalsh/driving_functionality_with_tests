@@ -9,7 +9,7 @@ import static com.assetco.search.results.AssetVendorRelationshipLevel.*;
 // Identifying the "patterns" in testing allowed us to boil the concrete tests down to just sets of parameters.
 // This is the most complex case, it has two sets of strict rules, a relaxed rule, and (of course) it dumps all
 // the basic-level assets.
-public class PartnerDealsApplicatorTests extends DealsApplicatorTests {
+public class PartnerDealsApplicatorTests extends GateBasedDealsApplicatorTests {
     public static class ForBasicAssets extends ExcludedAssetsDealsApplicatorTests {
         @Override
         protected AssetVendorRelationshipLevel getExcludedCategoryOfVendors() {
@@ -67,7 +67,7 @@ public class PartnerDealsApplicatorTests extends DealsApplicatorTests {
         }
     }
 
-    public static class ForPartnerAssets extends DealsApplicatorTests {
+    public static class ForPartnerAssets extends GateBasedDealsApplicatorTests {
         @BeforeEach
         public void setup() {
             baseSetup();

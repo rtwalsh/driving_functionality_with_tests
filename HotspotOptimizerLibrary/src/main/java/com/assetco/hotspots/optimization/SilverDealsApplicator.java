@@ -5,7 +5,7 @@ import com.assetco.search.results.*;
 import static com.assetco.hotspots.optimization.ActivityLevel.*;
 import static com.assetco.search.results.HotspotKey.Deals;
 
-public class SilverDealsApplicator extends DealsApplicator {
+public class SilverDealsApplicator extends GateBasedDealsApplicator {
     public SilverDealsApplicator(AssetAssessments assessments, AssetMeasurements measurements) {
         super(assessments, measurements);
     }
