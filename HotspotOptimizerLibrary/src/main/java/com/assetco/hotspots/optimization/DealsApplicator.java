@@ -14,7 +14,7 @@ public interface DealsApplicator {
             case Gold:
                 return new GoldGateBasedDealsApplicator(assessments, measurements);
             case Silver:
-                return new SilverDealsApplicator(assessments, measurements);
+                return new SilverGateBasedDealsApplicator(assessments, measurements);
         }
         return new BasicDealsApplicator();
     }
