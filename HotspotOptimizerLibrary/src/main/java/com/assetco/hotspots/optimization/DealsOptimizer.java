@@ -11,7 +11,7 @@ class DealsOptimizer {
 
         if (highestRelationshipLevelOptional.isPresent()) {
             var highestRelationshipLevel = highestRelationshipLevelOptional.get();
-            var dealsApplicator = GateBasedDealsApplicator.createInstance(highestRelationshipLevel, assessments, measurements);
+            var dealsApplicator = DealsApplicator.createInstance(highestRelationshipLevel, assessments, measurements);
             for (var asset : results.getFound())
                 dealsApplicator.applyDeals(results, asset);
         }

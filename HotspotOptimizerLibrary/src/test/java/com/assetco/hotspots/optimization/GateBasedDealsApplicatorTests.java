@@ -13,12 +13,12 @@ import static org.mockito.Mockito.*;
 public class GateBasedDealsApplicatorTests {
     protected AssetAssessments assessments;
     protected AssetMeasurements measurements;
-    protected GateBasedDealsApplicator applicator;
+    protected DealsApplicator applicator;
     protected Asset asset;
     protected SearchResults searchResults;
 
     protected void setGoverningRelationshipLevel(AssetVendorRelationshipLevel level) {
-        applicator = GateBasedDealsApplicator.createInstance(level, assessments, measurements);
+        applicator = DealsApplicator.createInstance(level, assessments, measurements);
     }
 
     public void baseSetup() {
