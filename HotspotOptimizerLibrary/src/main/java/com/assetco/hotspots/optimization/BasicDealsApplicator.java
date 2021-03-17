@@ -2,9 +2,8 @@ package com.assetco.hotspots.optimization;
 
 import com.assetco.search.results.*;
 
-public class BasicDealsApplicator extends GateBasedDealsApplicator {
+public class BasicDealsApplicator implements DealsApplicator {
     public BasicDealsApplicator(AssetAssessments assessments, AssetMeasurements measurements) {
-        super(assessments, measurements);
     }
 
     @Override
