@@ -5,8 +5,8 @@ import com.assetco.search.results.*;
 import static com.assetco.hotspots.optimization.ActivityLevel.*;
 import static com.assetco.search.results.HotspotKey.Deals;
 
-public class PartnerDealsApplicator extends GateBasedDealsApplicator {
-    public PartnerDealsApplicator(AssetAssessments assessments, AssetMeasurements measurements) {
+public class PartnerGateBasedDealsApplicator extends GateBasedDealsApplicator {
+    public PartnerGateBasedDealsApplicator(AssetAssessments assessments, AssetMeasurements measurements) {
         super(assessments, measurements);
     }
 

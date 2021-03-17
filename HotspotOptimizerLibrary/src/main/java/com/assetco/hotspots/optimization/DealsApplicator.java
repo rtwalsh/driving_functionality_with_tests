@@ -10,7 +10,7 @@ public interface DealsApplicator {
     static DealsApplicator createInstance(AssetVendorRelationshipLevel highestRelationshipLevel, AssetAssessments assessments, AssetMeasurements measurements) {
         switch (highestRelationshipLevel) {
             case Partner:
-                return new PartnerDealsApplicator(assessments, measurements);
+                return new PartnerGateBasedDealsApplicator(assessments, measurements);
             case Gold:
                 return new GoldGateBasedDealsApplicator(assessments, measurements);
             case Silver:
