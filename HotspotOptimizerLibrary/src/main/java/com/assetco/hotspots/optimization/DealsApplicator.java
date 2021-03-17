@@ -12,7 +12,7 @@ public interface DealsApplicator {
             case Partner:
                 return new PartnerDealsApplicator(assessments, measurements);
             case Gold:
-                return new GoldDealsApplicator(assessments, measurements);
+                return new GoldGateBasedDealsApplicator(assessments, measurements);
             case Silver:
                 return new SilverDealsApplicator(assessments, measurements);
         }
